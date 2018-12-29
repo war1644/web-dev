@@ -1,0 +1,17 @@
+docker run --restart unless-stopped --name php7 -itd -p 9001:9001 -p 81:80 -v /project/game/data:/var/www/ dxq/nginx_php7
+
+services:
+    image: dxq/nginx_php7
+    container_name: game
+    # 自重启
+    restart: unless-stopped
+    ports:
+        - "81:80"
+        #- "443:443"
+        - "9001:9001"
+    
+    volumes:
+        - "/project/game/:/var/www/"
+        #- "/var/log/nginx/:/var/log/nginx/"
+    #links:
+        #    - php
